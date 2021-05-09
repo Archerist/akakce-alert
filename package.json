@@ -1,0 +1,24 @@
+{
+  "name": "akakce-alert",
+  "version": "1.0.0",
+  "description": "Akakçede bir eşya ucuzlandığında Discord mesajı gönderir",
+  "main": "./build/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node ./build/app.js"
+  },
+  "author": "Archerist",
+  "license": "GPL3",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.1",
+    "got": "^11.8.2",
+    "jsdom": "^16.5.3"
+  },
+  "devDependencies": {
+    "@types/got": "^9.6.11",
+    "@types/jsdom": "^16.2.10",
+    "@types/node": "^15.0.2"
+  },
+  "type": "module"
+}
