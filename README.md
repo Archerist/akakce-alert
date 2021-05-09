@@ -5,6 +5,8 @@ Not: Bu kod sadece RX550, RX560, 5500XT ve 5600XT için çalışır. Eklemek ist
 
 Kullanım:
 
+Bot ile aynı sunucuda olmanız gerekir.
+
 ```
 git clone https://github.com/Archerist/akakce-alert.git
 cd akakce-alert
