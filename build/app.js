@@ -15,7 +15,6 @@ let prices = {
     rx5500xt: 0,
     rx5600xt: 0
 };
-let ready = false;
 const client = new DC.Client();
 client.on('message', async (msg) => {
     if (msg.content === 'prices') {
@@ -36,9 +35,27 @@ client.on('ready', async () => {
     sendMessage(`rx560: ${prices.rx560}`);
     sendMessage(`rx5500xt: ${prices.rx5500xt}`);
     sendMessage(`rx5600xt: ${prices.rx5600xt}`);
-    ready = true;
 });
 client.login(process.env.TOKEN);
+client.setInterval(async () => {
+    old_prices = prices;
+    prices.rx550 = await getAkakcePrice('rx550');
+    prices.rx560 = await getAkakcePrice('rx560');
+    prices.rx5500xt = await getAkakcePrice('rx5500xt');
+    prices.rx5600xt = await getAkakcePrice('rx5600xt');
+    if (prices.rx550 < old_prices.rx550) {
+        sendMessage(`rx550 got cheaper: ${prices.rx550}`);
+    }
+    if (prices.rx560 < old_prices.rx560) {
+        sendMessage(`rx560 got cheaper: ${prices.rx560}`);
+    }
+    if (prices.rx5500xt < old_prices.rx5500xt) {
+        sendMessage(`rx5500xt got cheaper: ${prices.rx5500xt}`);
+    }
+    if (prices.rx5600xt < old_prices.rx5600xt) {
+        sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`);
+    }
+}, 1000);
 async function getPrices() {
     prices.rx550 = await getAkakcePrice('rx550');
     prices.rx560 = await getAkakcePrice('rx560');
@@ -49,26 +66,5 @@ function sendMessage(msg) {
     client.users.fetch(archID, false).then(u => {
         u.send(msg);
     });
-}
-if (ready) {
-    setInterval(async () => {
-        old_prices = prices;
-        prices.rx550 = await getAkakcePrice('rx550');
-        prices.rx560 = await getAkakcePrice('rx560');
-        prices.rx5500xt = await getAkakcePrice('rx5500xt');
-        prices.rx5600xt = await getAkakcePrice('rx5600xt');
-        if (prices.rx550 < old_prices.rx550) {
-            sendMessage(`rx550 got cheaper: ${prices.rx550}`);
-        }
-        if (prices.rx560 < old_prices.rx560) {
-            sendMessage(`rx560 got cheaper: ${prices.rx560}`);
-        }
-        if (prices.rx5500xt < old_prices.rx5500xt) {
-            sendMessage(`rx5500xt got cheaper: ${prices.rx5500xt}`);
-        }
-        if (prices.rx5600xt < old_prices.rx5600xt) {
-            sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`);
-        }
-    }, 1000);
 }
 //# sourceMappingURL=app.js.map
