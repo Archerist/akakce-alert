@@ -1,10 +1,10 @@
 import got from "got";
 import {JSDOM} from 'jsdom'
 
-const rx550URL = 'https://www.akakce.com/ekran-karti/rx-550.html'
-const rx560URL = 'https://www.akakce.com/ekran-karti/rx-560.html'
-const rx5500xtURL = 'https://www.akakce.com/ekran-karti/rx-5500-xt.html'
-const rx5600xtURL = 'https://www.akakce.com/ekran-karti.html/150008'
+const rx550URL = 'https://www.akakce.com/ekran-karti/rx-550,1,2.html'
+const rx560URL = 'https://www.akakce.com/ekran-karti/rx-560,1,2.html'
+const rx5500xtURL = 'https://www.akakce.com/ekran-karti/rx-5500-xt,1,2.html'
+const rx5600xtURL = 'https://www.akakce.com/ekran-karti,1,2.html/150008'
 
 
 export async function getAkakcePrice(gpu:string):Promise<any>{
