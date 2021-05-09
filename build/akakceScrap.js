@@ -1,24 +1,27 @@
 import got from "got";
 import { JSDOM } from 'jsdom';
-const rx550URL = 'https://www.akakce.com/ekran-karti/rx-550.html';
-const rx560URL = 'https://www.akakce.com/ekran-karti/rx-560.html';
-const rx5500xtURL = 'https://www.akakce.com/ekran-karti/rx-5500-xt.html';
-const rx5600xtURL = 'https://www.akakce.com/ekran-karti.html/150008';
+const rx550URL = 'https://www.akakce.com/ekran-karti/rx-550,1,2.html';
+const rx560URL = 'https://www.akakce.com/ekran-karti/rx-560,1,2.html';
+const rx5500xtURL = 'https://www.akakce.com/ekran-karti/rx-5500-xt,1,2.html';
+const rx5600xtURL = 'https://www.akakce.com/ekran-karti,1,2.html/150008';
 export async function getAkakcePrice(gpu) {
     let price;
     let res;
+    const options = {
+        cache: false,
+    };
     switch (gpu) {
         case 'rx550':
-            res = await got(rx550URL);
+            res = await got(rx550URL, options);
             break;
         case 'rx560':
-            res = await got(rx560URL);
+            res = await got(rx560URL, options);
             break;
         case 'rx5500xt':
-            res = await got(rx5500xtURL);
+            res = await got(rx5500xtURL, options);
             break;
         case 'rx5600xt':
-            res = await got(rx5600xtURL);
+            res = await got(rx5600xtURL, options);
             break;
     }
     let dom = new JSDOM(res.body);
