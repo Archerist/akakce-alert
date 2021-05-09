@@ -1,9 +1,9 @@
 import got from "got";
 import { JSDOM } from 'jsdom';
-const rx550URL = 'https://www.akakce.com/ekran-karti.html/23163,26215,109703';
-const rx560URL = 'https://www.akakce.com/ekran-karti.html/23163,26215,109704';
-const rx5500xtURL = 'https://www.akakce.com/ekran-karti.html/23163,26215,149659';
-const rx5600xtURL = 'https://www.akakce.com/ekran-karti.html/23163,26215,150008';
+const rx550URL = 'https://www.akakce.com/ekran-karti/rx-550.html';
+const rx560URL = 'https://www.akakce.com/ekran-karti/rx-560.html';
+const rx5500xtURL = 'https://www.akakce.com/ekran-karti/rx-5500-xt.html';
+const rx5600xtURL = 'https://www.akakce.com/ekran-karti.html/150008';
 export async function getAkakcePrice(gpu) {
     let price;
     let res;
