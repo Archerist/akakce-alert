@@ -27,7 +27,6 @@ let prices :gpus ={
 	rx5600xt:0
 }
 
-
 const client = new DC.Client()
 
 client.on('message', async (msg) => {
@@ -46,7 +45,6 @@ client.on('ready', async () => {
 	
 	console.log('Started')
 
-
 	await getPrices();
 	sendMessage('Current Prices:');
 	sendMessage(`rx550: ${prices.rx550}`);
@@ -54,34 +52,32 @@ client.on('ready', async () => {
 	sendMessage(`rx5500xt: ${prices.rx5500xt}`);
 	sendMessage(`rx5600xt: ${prices.rx5600xt}`);
 
-
-
-	setInterval( async () => {
-		old_prices = prices
-		prices.rx550 = await getAkakcePrice('rx550');
-		prices.rx560 = await getAkakcePrice('rx560');
-		prices.rx5500xt = await getAkakcePrice('rx5500xt');
-		prices.rx5600xt = await getAkakcePrice('rx5600xt');
-	
-	
-		if(prices.rx550 < old_prices.rx550){
-			sendMessage(`rx550 got cheaper: ${prices.rx550}`)
-		}
-		if(prices.rx560 < old_prices.rx560){
-			sendMessage(`rx560 got cheaper: ${prices.rx560}`)
-		}
-		if(prices.rx5500xt < old_prices.rx5500xt){
-			sendMessage(`rx5500xt got cheaper: ${prices.rx5500xt}`)
-		}
-		if(prices.rx5600xt < old_prices.rx5600xt){
-			sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`)
-		}
-	}, 60000)
-
 })
 
 
 client.login(process.env.TOKEN);
+
+client.setInterval( async () => {
+	old_prices = prices
+	prices.rx550 = await getAkakcePrice('rx550');
+	prices.rx560 = await getAkakcePrice('rx560');
+	prices.rx5500xt = await getAkakcePrice('rx5500xt');
+	prices.rx5600xt = await getAkakcePrice('rx5600xt');
+
+
+	if(prices.rx550 < old_prices.rx550){
+		sendMessage(`rx550 got cheaper: ${prices.rx550}`)
+	}
+	if(prices.rx560 < old_prices.rx560){
+		sendMessage(`rx560 got cheaper: ${prices.rx560}`)
+	}
+	if(prices.rx5500xt < old_prices.rx5500xt){
+		sendMessage(`rx5500xt got cheaper: ${prices.rx5500xt}`)
+	}
+	if(prices.rx5600xt < old_prices.rx5600xt){
+		sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`)
+	}
+}, 1000)
 
 async function getPrices(){
 

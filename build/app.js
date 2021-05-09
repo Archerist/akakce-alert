@@ -15,6 +15,7 @@ let prices = {
     rx5500xt: 0,
     rx5600xt: 0
 };
+let ready = false;
 const client = new DC.Client();
 client.on('message', async (msg) => {
     if (msg.content === 'prices') {
@@ -35,6 +36,21 @@ client.on('ready', async () => {
     sendMessage(`rx560: ${prices.rx560}`);
     sendMessage(`rx5500xt: ${prices.rx5500xt}`);
     sendMessage(`rx5600xt: ${prices.rx5600xt}`);
+    ready = true;
+});
+client.login(process.env.TOKEN);
+async function getPrices() {
+    prices.rx550 = await getAkakcePrice('rx550');
+    prices.rx560 = await getAkakcePrice('rx560');
+    prices.rx5500xt = await getAkakcePrice('rx5500xt');
+    prices.rx5600xt = await getAkakcePrice('rx5600xt');
+}
+function sendMessage(msg) {
+    client.users.fetch(archID, false).then(u => {
+        u.send(msg);
+    });
+}
+if (ready) {
     setInterval(async () => {
         old_prices = prices;
         prices.rx550 = await getAkakcePrice('rx550');
@@ -53,18 +69,6 @@ client.on('ready', async () => {
         if (prices.rx5600xt < old_prices.rx5600xt) {
             sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`);
         }
-    }, 60000);
-});
-client.login(process.env.TOKEN);
-async function getPrices() {
-    prices.rx550 = await getAkakcePrice('rx550');
-    prices.rx560 = await getAkakcePrice('rx560');
-    prices.rx5500xt = await getAkakcePrice('rx5500xt');
-    prices.rx5600xt = await getAkakcePrice('rx5600xt');
-}
-function sendMessage(msg) {
-    client.users.fetch(archID, false).then(u => {
-        u.send(msg);
-    });
+    }, 1000);
 }
 //# sourceMappingURL=app.js.map
