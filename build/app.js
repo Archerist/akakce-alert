@@ -43,6 +43,7 @@ client.setInterval(async () => {
     prices.rx560 = await getAkakcePrice('rx560');
     prices.rx5500xt = await getAkakcePrice('rx5500xt');
     prices.rx5600xt = await getAkakcePrice('rx5600xt');
+    console.log(prices);
     if (prices.rx550 < old_prices.rx550) {
         sendMessage(`rx550 got cheaper: ${prices.rx550}`);
     }
@@ -55,7 +56,7 @@ client.setInterval(async () => {
     if (prices.rx5600xt < old_prices.rx5600xt) {
         sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`);
     }
-}, 1000);
+}, 60000);
 async function getPrices() {
     prices.rx550 = await getAkakcePrice('rx550');
     prices.rx560 = await getAkakcePrice('rx560');
