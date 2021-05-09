@@ -77,7 +77,7 @@ client.setInterval( async () => {
 	if(prices.rx5600xt < old_prices.rx5600xt){
 		sendMessage(`rx5600xt got cheaper: ${prices.rx5600xt}`)
 	}
-}, 1000)
+}, 60000)
 
 async function getPrices(){
 
