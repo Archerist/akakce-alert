@@ -64,6 +64,7 @@ client.setInterval( async () => {
 	prices.rx5500xt = await getAkakcePrice('rx5500xt');
 	prices.rx5600xt = await getAkakcePrice('rx5600xt');
 
+	console.log(prices)
 
 	if(prices.rx550 < old_prices.rx550){
 		sendMessage(`rx550 got cheaper: ${prices.rx550}`)
