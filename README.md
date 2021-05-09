@@ -16,4 +16,7 @@ echo 'ID = <kullanıcı id>' >> .env
 npm start
 ```
 
+Debug:
+VS Code için launch.json mevcuttur.
+
 GPL3 Lisanslıdır
