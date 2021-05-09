@@ -30,6 +30,17 @@ let prices :gpus ={
 
 const client = new DC.Client()
 
+client.on('message', async (msg) => {
+	if(msg.content === 'prices'){
+		await getPrices()
+		msg.reply('Current Prices:');
+		msg.reply(`rx550: ${prices.rx550}`);
+		msg.reply(`rx560: ${prices.rx560}`);
+		msg.reply(`rx5500xt: ${prices.rx5500xt}`);
+		msg.reply(`rx5600xt: ${prices.rx5600xt}`);
+	}
+})
+
 client.on('ready', async () => {
 	sendMessage('Started')
 	
