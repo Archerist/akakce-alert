@@ -1,7 +1,7 @@
 # akakce-alert
 Ekran kartı fiyatları ucuzladığında Discord'dan mesaj gönderir
 
-Not: Bu kod sadece RX550,RX560, 5500XT ve 5600XT için çalışır. Eklemek istediğiniz kart varsa kodu değiştirmeniz gerekir.
+Not: Bu kod sadece RX550, RX560, 5500XT ve 5600XT için çalışır. Eklemek istediğiniz kart varsa kodu değiştirmeniz gerekir.
 
 Kullanım:
 
