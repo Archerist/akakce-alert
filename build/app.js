@@ -36,7 +36,7 @@ client.on('ready', async () => {
     sendMessage(`rx5500xt: ${prices.rx5500xt}`);
     sendMessage(`rx5600xt: ${prices.rx5600xt}`);
     setInterval(async () => {
-        let old_prices = prices;
+        old_prices = prices;
         prices.rx550 = await getAkakcePrice('rx550');
         prices.rx560 = await getAkakcePrice('rx560');
         prices.rx5500xt = await getAkakcePrice('rx5500xt');
