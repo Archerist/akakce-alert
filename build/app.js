@@ -38,7 +38,7 @@ client.on('ready', async () => {
 });
 client.login(process.env.TOKEN);
 client.setInterval(async () => {
-    old_prices = prices;
+    old_prices = { ...prices };
     prices.rx550 = await getAkakcePrice('rx550');
     prices.rx560 = await getAkakcePrice('rx560');
     prices.rx5500xt = await getAkakcePrice('rx5500xt');
